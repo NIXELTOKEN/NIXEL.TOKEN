@@ -86,6 +86,7 @@
         <p id="price">Loading current price...</p>
         <p id="sold">Loading total sold tokens...</p>
         <p id="left">Loading remaining tokens in this stage...</p>
+        <p id="bnb">Loading total BNB received...</p>
       </div>
     </div>
   </section>
@@ -107,6 +108,7 @@
     const stage2Cap = 1500000000;
     const stage3Cap = 500000000;
     const totalSold = 650000000; // <-- القيمة الحالية من البوت
+    const bnbReceived = 61750; // <-- القيمة الحالية من البوت بالدولار التقريبي
 
     let stage, price, remaining;
 
@@ -128,6 +130,7 @@
     document.getElementById('price').textContent = `Current Price: ${price}`;
     document.getElementById('sold').textContent = `Total Sold Tokens: ${totalSold.toLocaleString()} NIX`;
     document.getElementById('left').textContent = `Remaining in This Stage: ${remaining.toLocaleString()} NIX`;
+    document.getElementById('bnb').textContent = `Total BNB Value Received: ~$${bnbReceived.toLocaleString()}`;
   </script>
 
 </body>
