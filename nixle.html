@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NIXEL Token</title>
+  <style>
+    body {
+      background-color: #1d1d1d;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #292929;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00ffcc;
+    }
+
+    .platform-logos {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .platform-logos img {
+      width: 80px;
+      height: auto;
+      opacity: 0.8;
+    }
+
+    .progress-section {
+      text-align: center;
+      margin: 2rem;
+    }
+
+    .progress-container {
+      background-color: #555;
+      width: 80%;
+      margin: 1rem auto;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background-color: #00ffcc;
+      height: 25px;
+      width: 0%;
+      transition: width 1s;
+    }
+
+    .bubble {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #00ffcc;
+      color: black;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      opacity: 0;
+      animation: pop 0.5s ease-out forwards;
+    }
+
+    @keyframes pop {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-40px);
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #292929;
+    }
+
+    .socials a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>NIXEL Token (NIX)</h1>
+    <p>Buy with BNB only - BSC Network</p>
+    <p>Contract: 0xC89334a5aa130C6E9162cF45Db33168d078eFE80</p>
+    <div class="platform-logos">
+      <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="Binance" />
+      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="Ethereum" />
+      <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg" alt="USDT" />
+      <img src="https://cryptologos.cc/logos/pancakeswap-cake-logo.svg" alt="PancakeSwap" />
+    </div>
+  </header>
+
+  <section class="progress-section">
+    <h2>Sale Progress</h2>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p>Stage: <span id="currentStage">1</span></p>
+  </section>
+
+  <footer>
+    <div class="socials">
+      <a href="https://x.com/NIXELTOKEN" target="_blank">Follow us on X</a>
+    </div>
+    <p>&copy; 2025 NIXEL Token - All rights reserved.</p>
+  </footer>
+
+  <script>
+    // تحديث نسبة التقدم
+    const totalTokens = 5000000000;
+    const soldTokens = 2100000000; // تحديث العدد حسب البيانات الحقيقية
+    const progress = (soldTokens / totalTokens) * 100;
+    document.getElementById("progressBar").style.width = progress + "%";
+
+    // تحديد المرحلة الحالية
+    const currentStage =
+      soldTokens <= 2000000000
+        ? 1
+        : soldTokens <= 3500000000
+        ? 2
+        : 3;
+    document.getElementById("currentStage").textContent = currentStage;
+
+    // فقاعات الشراء التجريبية
+    function showBubble(text) {
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      bubble.textContent = text;
+      document.body.appendChild(bubble);
+      setTimeout(() => {
+        document.body.removeChild(bubble);
+      }, 500);
+    }
+
+    // عرض فقاعات وهمية كل 3 ثواني
+    setInterval(() => {
+      showBubble("Someone bought NIX!");
+    }, 3000);
+  </script>
+</body>
+
+</html>
