@@ -16,13 +16,19 @@
     <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-xl mx-auto">
       The next big utility token on Binance Smart Chain with dynamic stage-based sales and zero taxes.
     </p>
-    <div class="mt-8">
+    <div class="mt-8 flex justify-center items-center space-x-4">
+      <input
+        type="number"
+        id="bnbAmount"
+        placeholder="Enter BNB amount"
+        step="0.001"
+        min="0.001"
+        class="w-40 px-4 py-2 rounded text-gray-900 font-semibold"
+      />
       <button id="connectWallet" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition">Connect Wallet</button>
-      <button id="buyButton" class="ml-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition">Buy Now</button>
+      <button id="buyButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition">Buy Now</button>
     </div>
   </section>
-
-  <!-- باقي الأقسام بدون تغيير -->
 
   <!-- Live Stats Section -->
   <section class="bg-gray-800 py-16 px-6">
@@ -34,22 +40,22 @@
         <p id="sold">Loading total sold tokens...</p>
         <p id="left">Loading remaining tokens in this stage...</p>
         <p id="bnb">Loading total BNB received...</p>
-        <p id="usd">Loading USD value of BNB received...</p>
       </div>
     </div>
   </section>
 
   <footer class="bg-gray-800 py-10 text-center">
     <p class="mb-4">Smart Contract Address:</p>
-    <code class="bg-gray-700 p-2 rounded">0x9EB6c8C1877BF58BCd8680E057C3780B14749625</code>
+    <code class="bg-gray-700 p-2 rounded">0xC89334a5aa130C6E9162cF45Db33168d078eFE80</code>
     <div class="mt-6 space-x-4">
       <a href="https://t.me/nixelcommunity" target="_blank" class="text-blue-400 hover:underline">Telegram</a>
-      <a href="https://bscscan.com/address/0x9EB6c8C1877BF58BCd8680E057C3780B14749625" target="_blank" class="text-blue-400 hover:underline">View on BscScan</a>
+      <a href="https://bscscan.com/address/0xC89334a5aa130C6E9162cF45Db33168d078eFE80" target="_blank" class="text-blue-400 hover:underline">View on BscScan</a>
     </div>
     <p class="mt-6 text-sm text-gray-400">© 2025 NIXEL Token. All rights reserved.</p>
   </footer>
 
   <script>
+    // Wallet connection
     let web3;
     let userAccount;
 
@@ -76,14 +82,18 @@
         alert('Please connect your wallet first.');
         return;
       }
-      const contractAddress = '0x9EB6c8C1877BF58BCd8680E057C3780B14749625';
-      const amountInBNB = '0.01';
+      const contractAddress = '0xC89334a5aa130C6E9162cF45Db33168d078eFE80';
+      const bnbInput = document.getElementById('bnbAmount').value;
+      if (!bnbInput || isNaN(bnbInput) || Number(bnbInput) <= 0) {
+        alert('Please enter a valid BNB amount greater than 0.');
+        return;
+      }
 
       try {
         const tx = await web3.eth.sendTransaction({
           from: userAccount,
           to: contractAddress,
-          value: web3.utils.toWei(amountInBNB, 'ether')
+          value: web3.utils.toWei(bnbInput, 'ether')
         });
         console.log("Transaction sent:", tx);
         alert("Purchase successful!");
@@ -95,12 +105,12 @@
 
     document.getElementById('buyButton').addEventListener('click', buyToken);
 
+    // تحديث بيانات التوكن (ثابتة حتى الآن)
     const stage1Cap = 2000000000;
     const stage2Cap = 1500000000;
     const stage3Cap = 500000000;
     const totalSold = 650000000;
     const bnbReceived = 61750;
-    const bnbPriceUSD = 650; // تم التعديل هنا حسب طلبك
 
     let stage, price, remaining;
 
@@ -122,8 +132,7 @@
     document.getElementById('price').textContent = `Current Price: ${price}`;
     document.getElementById('sold').textContent = `Total Sold Tokens: ${totalSold.toLocaleString()} NIX`;
     document.getElementById('left').textContent = `Remaining in This Stage: ${remaining.toLocaleString()} NIX`;
-    document.getElementById('bnb').textContent = `Total BNB Received: ${bnbReceived.toLocaleString()} BNB`;
-    document.getElementById('usd').textContent = `USD Equivalent: ~$${(bnbReceived * bnbPriceUSD).toLocaleString()}`;
+    document.getElementById('bnb').textContent = `Total BNB Value Received: ~$${bnbReceived.toLocaleString()}`;
   </script>
 </body>
 </html>
