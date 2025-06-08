@@ -1,160 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NIXEL Token</title>
-  <style>
-    body {
-      background-color: #1d1d1d;
-      font-family: Arial, sans-serif;
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #292929;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    h1 {
-      color: #00ffcc;
-    }
-
-    .platform-logos {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .platform-logos img {
-      width: 80px;
-      height: auto;
-      opacity: 0.8;
-    }
-
-    .progress-section {
-      text-align: center;
-      margin: 2rem;
-    }
-
-    .progress-container {
-      background-color: #555;
-      width: 80%;
-      margin: 1rem auto;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      background-color: #00ffcc;
-      height: 25px;
-      width: 0%;
-      transition: width 1s;
-    }
-
-    .bubble {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #00ffcc;
-      color: black;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      opacity: 0;
-      animation: pop 0.5s ease-out forwards;
-    }
-
-    @keyframes pop {
-      0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(0);
-      }
-      100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(-40px);
-      }
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #292929;
-    }
-
-    .socials a {
-      color: #00ffcc;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-  </style>
+  <title>NIXEL Token | BSC</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
+<body class="bg-gray-900 text-white font-sans">
 
-<body>
-  <header>
-    <h1>NIXEL Token (NIX)</h1>
-    <p>Buy with BNB only - BSC Network</p>
-    <p>Contract: 0xC89334a5aa130C6E9162cF45Db33168d078eFE80</p>
-    <div class="platform-logos">
-      <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.svg" alt="Binance" />
-      <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg" alt="Ethereum" />
-      <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg" alt="USDT" />
-      <img src="https://cryptologos.cc/logos/pancakeswap-cake-logo.svg" alt="PancakeSwap" />
-    </div>
-  </header>
-
-  <section class="progress-section">
-    <h2>Sale Progress</h2>
-    <div class="progress-container">
-      <div class="progress-bar" id="progressBar"></div>
-    </div>
-    <p>Stage: <span id="currentStage">1</span></p>
+  <!-- Hero Section -->
+  <section class="text-center py-20 px-5">
+    <h1 class="text-4xl md:text-6xl font-bold text-blue-400">NIXEL Token</h1>
+    <p class="mt-4 text-lg md:text-xl text-gray-300 max-w-xl mx-auto">
+      The next big utility token on Binance Smart Chain with dynamic stage-based sales and zero taxes.
+    </p>
+    <a href="#how-to-buy" class="mt-8 inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition">Buy Now with Web3 Wallet</a>
   </section>
 
-  <footer>
-    <div class="socials">
-      <a href="https://x.com/NIXELTOKEN" target="_blank">Follow us on X</a>
+  <!-- Tokenomics -->
+  <section class="bg-gray-800 py-16 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6 text-blue-300">Tokenomics</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-2">Total Supply</h3>
+          <p>5 Billion NIX Tokens</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-2">Tax</h3>
+          <p>No buy or sell taxes</p>
+        </div>
+        <div class="bg-gray-700 p-6 rounded-xl">
+          <h3 class="text-xl font-semibold mb-2">Sale Stages</h3>
+          <p>
+            - Stage 1: 2B @ $0.000095<br>
+            - Stage 2: 1.5B @ $0.0005<br>
+            - Stage 3: 0.5B @ $0.00085
+          </p>
+        </div>
+      </div>
     </div>
-    <p>&copy; 2025 NIXEL Token - All rights reserved.</p>
+  </section>
+
+  <!-- How to Buy -->
+  <section id="how-to-buy" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8 text-blue-300">How to Buy</h2>
+      <p class="text-lg mb-6">You can buy NIXEL tokens directly from the smart contract using any Web3 wallet such as MetaMask or Trust Wallet. Payment is accepted in <strong>BNB only</strong>.</p>
+      <ol class="list-decimal text-left text-lg space-y-4">
+        <li>Open your Web3 wallet (MetaMask, Trust Wallet...)</li>
+        <li>Connect to Binance Smart Chain (BSC)</li>
+        <li>Go to the contract page on BscScan</li>
+        <li>Click "Write Contract" → Connect Wallet</li>
+        <li>Use the buy function and send the BNB amount</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8 text-blue-300">Roadmap</h2>
+      <ol class="list-decimal text-left text-lg space-y-4">
+        <li>Launch the official website</li>
+        <li>Deploy and verify the smart contract</li>
+        <li>Start dynamic token sales through contract</li>
+        <li>Community building on Telegram, Twitter</li>
+        <li>Auto-listing on PancakeSwap</li>
+        <li>Apply for CoinMarketCap and CoinGecko listings</li>
+        <li>Launch NFT Marketplace and staking</li>
+        <li>Introduce NIXEL Wallet App</li>
+        <li>List on Tier-2 exchanges</li>
+        <li>Expand to multi-chain support</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Live Stats Section -->
+  <section class="bg-gray-800 py-16 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8 text-blue-300">Live Stats</h2>
+      <div id="stats" class="text-lg space-y-4">
+        <p id="stage">Loading current stage...</p>
+        <p id="price">Loading current price...</p>
+        <p id="sold">Loading total sold tokens...</p>
+        <p id="left">Loading remaining tokens in this stage...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer -->
+  <footer class="bg-gray-800 py-10 text-center">
+    <p class="mb-4">Smart Contract Address:</p>
+    <code class="bg-gray-700 p-2 rounded">0x9EB6c8C1877BF58BCd8680E057C3780B14749625</code>
+    <div class="mt-6 space-x-4">
+      <a href="https://t.me/nixelcommunity" target="_blank" class="text-blue-400 hover:underline">Telegram</a>
+      <a href="https://bscscan.com/address/0x9EB6c8C1877BF58BCd8680E057C3780B14749625" target="_blank" class="text-blue-400 hover:underline">View on BscScan</a>
+    </div>
+    <p class="mt-6 text-sm text-gray-400">© 2025 NIXEL Token. All rights reserved.</p>
   </footer>
 
   <script>
-    // تحديث نسبة التقدم
-    const totalTokens = 5000000000;
-    const soldTokens = 2100000000; // تحديث العدد حسب البيانات الحقيقية
-    const progress = (soldTokens / totalTokens) * 100;
-    document.getElementById("progressBar").style.width = progress + "%";
+    // تحديث بيانات المراحل حسب التوكنات المباعة يدويًا
+    const stage1Cap = 2000000000;
+    const stage2Cap = 1500000000;
+    const stage3Cap = 500000000;
+    const totalSold = 650000000; // <-- القيمة الحالية من البوت
 
-    // تحديد المرحلة الحالية
-    const currentStage =
-      soldTokens <= 2000000000
-        ? 1
-        : soldTokens <= 3500000000
-        ? 2
-        : 3;
-    document.getElementById("currentStage").textContent = currentStage;
+    let stage, price, remaining;
 
-    // فقاعات الشراء التجريبية
-    function showBubble(text) {
-      const bubble = document.createElement("div");
-      bubble.classList.add("bubble");
-      bubble.textContent = text;
-      document.body.appendChild(bubble);
-      setTimeout(() => {
-        document.body.removeChild(bubble);
-      }, 500);
+    if (totalSold < stage1Cap) {
+      stage = 'Stage 1';
+      price = '$0.000095';
+      remaining = stage1Cap - totalSold;
+    } else if (totalSold < stage1Cap + stage2Cap) {
+      stage = 'Stage 2';
+      price = '$0.0005';
+      remaining = stage1Cap + stage2Cap - totalSold;
+    } else {
+      stage = 'Stage 3';
+      price = '$0.00085';
+      remaining = stage1Cap + stage2Cap + stage3Cap - totalSold;
     }
 
-    // عرض فقاعات وهمية كل 3 ثواني
-    setInterval(() => {
-      showBubble("Someone bought NIX!");
-    }, 3000);
+    document.getElementById('stage').textContent = `Current Stage: ${stage}`;
+    document.getElementById('price').textContent = `Current Price: ${price}`;
+    document.getElementById('sold').textContent = `Total Sold Tokens: ${totalSold.toLocaleString()} NIX`;
+    document.getElementById('left').textContent = `Remaining in This Stage: ${remaining.toLocaleString()} NIX`;
   </script>
-</body>
 
+</body>
 </html>
