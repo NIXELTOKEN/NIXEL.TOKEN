@@ -103,34 +103,47 @@
   </footer>
 
   <script>
-    // تحديث بيانات المراحل حسب التوكنات المباعة يدويًا
     const stage1Cap = 2000000000;
     const stage2Cap = 1500000000;
     const stage3Cap = 500000000;
-    const totalSold = 650000000; // <-- القيمة الحالية من البوت
-    const bnbReceived = 61750; // <-- القيمة الحالية من البوت بالدولار التقريبي
 
-    let stage, price, remaining;
+    async function loadStats() {
+      try {
+        const response = await fetch("https://api.elkhdawy.com/nixel-stats");
+        const data = await response.json();
 
-    if (totalSold < stage1Cap) {
-      stage = 'Stage 1';
-      price = '$0.000095';
-      remaining = stage1Cap - totalSold;
-    } else if (totalSold < stage1Cap + stage2Cap) {
-      stage = 'Stage 2';
-      price = '$0.0005';
-      remaining = stage1Cap + stage2Cap - totalSold;
-    } else {
-      stage = 'Stage 3';
-      price = '$0.00085';
-      remaining = stage1Cap + stage2Cap + stage3Cap - totalSold;
+        const totalSold = data.totalSold || 0;
+        const bnbReceived = data.bnbReceived || 0;
+
+        let stage, price, remaining;
+
+        if (totalSold < stage1Cap) {
+          stage = 'Stage 1';
+          price = '$0.000095';
+          remaining = stage1Cap - totalSold;
+        } else if (totalSold < stage1Cap + stage2Cap) {
+          stage = 'Stage 2';
+          price = '$0.0005';
+          remaining = stage1Cap + stage2Cap - totalSold;
+        } else {
+          stage = 'Stage 3';
+          price = '$0.00085';
+          remaining = stage1Cap + stage2Cap + stage3Cap - totalSold;
+        }
+
+        document.getElementById('stage').textContent = `Current Stage: ${stage}`;
+        document.getElementById('price').textContent = `Current Price: ${price}`;
+        document.getElementById('sold').textContent = `Total Sold Tokens: ${totalSold.toLocaleString()} NIX`;
+        document.getElementById('left').textContent = `Remaining in This Stage: ${remaining.toLocaleString()} NIX`;
+        document.getElementById('bnb').textContent = `Total BNB Value Received: ~$${bnbReceived.toLocaleString()}`;
+
+      } catch (error) {
+        document.getElementById('stats').innerHTML = '<p class="text-red-400">Failed to load stats. Please try again later.</p>';
+        console.error("Stats Fetch Error:", error);
+      }
     }
 
-    document.getElementById('stage').textContent = `Current Stage: ${stage}`;
-    document.getElementById('price').textContent = `Current Price: ${price}`;
-    document.getElementById('sold').textContent = `Total Sold Tokens: ${totalSold.toLocaleString()} NIX`;
-    document.getElementById('left').textContent = `Remaining in This Stage: ${remaining.toLocaleString()} NIX`;
-    document.getElementById('bnb').textContent = `Total BNB Value Received: ~$${bnbReceived.toLocaleString()}`;
+    loadStats();
   </script>
 
 </body>
